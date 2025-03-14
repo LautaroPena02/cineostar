@@ -1,0 +1,49 @@
+<div class="container-fluid film-container">
+    <div class="container">
+      <h2 class="vintage-title">Buscar Películas</h2>
+      
+      <div class="search-bar">
+        <div class="input-group">
+          <input type="text" class="form-control vintage-input" [(ngModel)]="query" placeholder="Buscar películas...">
+          <div class="input-group-append">
+            <button class="vintage-btn search-btn" type="button" (click)="searchMovies()">Buscar</button>
+          </div>
+        </div>
+      </div>
+      
+      <div *ngIf="errorMessage" class="alert alert-danger vintage-alert mt-3">
+        {{ errorMessage }}
+      </div>
+      
+      <div *ngIf="recentSearches.length > 0" class="recent-searches mt-4">
+        <h3 class="search-subtitle">Últimas búsquedas:</h3>
+        <ul class="search-history">
+          <li *ngFor="let search of recentSearches">
+            <a href="#" class="history-link" (click)="query = search; searchMovies(); $event.preventDefault()">{{ search }}</a>
+          </li>
+        </ul>
+        <button class="vintage-btn secondary-btn" (click)="clearRecentSearches()">Limpiar búsquedas</button>
+      </div>
+      
+      <div *ngIf="searchResults.length === 0 && query && !errorMessage" class="alert alert-info vintage-alert info-alert mt-4">
+        No se encontraron películas con ese título.
+      </div>
+      
+      <div class="row g-3 mt-4">
+        <div class="col-12 col-sm-6 col-lg-4" *ngFor="let movie of searchResults">
+          <div class="movie-card">
+            <div class="poster-frame">
+              <img [src]="movie.poster_path" class="movie-poster" alt="{{ movie.title }}">
+              <div class="film-strip top"></div>
+              <div class="film-strip bottom"></div>
+            </div>
+            <div class="card-content">
+              <h5 class="movie-title">{{ movie.title }}</h5>
+              <p class="release-year">{{ movie.release_date }}</p>
+              <a [routerLink]="['/movie', movie.id]" class="vintage-btn">Ver Detalles</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

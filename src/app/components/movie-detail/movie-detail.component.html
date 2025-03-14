@@ -1,0 +1,59 @@
+<div class="movie-detail-container" *ngIf="movie">
+    <a class="back-button" routerLink="/search">
+      <i class="fas fa-arrow-left"></i> Volver a búsqueda
+    </a>
+    <div class="vintage-notification watchlist-notification" *ngIf="showWatchlistMessage">
+      <i class="fas fa-bookmark"></i>
+      "{{ movie.title }}" se ha agregado a tu lista de Pendientes
+    </div>
+    <div class="vintage-notification watchlist-error" *ngIf="showWatchlistError">
+      <i class="fas fa-exclamation-circle"></i>
+      "{{ movie.title }}" ya está en tu lista de Pendientes
+    </div>
+    <div class="vintage-notification watched-notification" *ngIf="showWatchedMessage">
+      <i class="fas fa-check"></i>
+      "{{ movie.title }}" se ha agregado a tu lista de Vistas
+    </div>
+    <div class="vintage-notification watched-error" *ngIf="showWatchedError">
+      <i class="fas fa-exclamation-circle"></i>
+      "{{ movie.title }}" ya está en tu lista de Vistas
+    </div>
+    <h2 class="movie-detail-title">{{ movie.title }}</h2>
+    
+    <div class="row">
+      <div class="col-md-4">
+        <div class="poster-container">
+          <div class="film-strip top"></div>
+          <img [src]="movie.poster_path" class="movie-detail-poster" alt="{{ movie.title }}">
+          <div class="film-strip bottom"></div>
+        </div>
+      </div>
+      
+      <div class="col-md-8">
+        <div class="movie-info-container">
+          <p class="movie-overview">{{ movie.overview }}</p>
+          
+          <div class="movie-details">
+            <div class="detail-item">
+              <span class="detail-label">Fecha de lanzamiento:</span>
+              <span class="detail-value">{{ movie.release_date }}</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label">Calificación:</span>
+              <span class="detail-value rating-value">{{ movie.vote_average }}</span>
+            </div>
+          </div>
+          
+          <div class="action-buttons">
+            <button (click)="addToWatchlist()" class="vintage-action-btn primary">
+              <i class="fas fa-bookmark"></i> Agregar a Pendientes
+            </button>
+            <button (click)="addToWatched()" class="vintage-action-btn secondary">
+              <i class="fas fa-check"></i> Agregar a Vistas
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

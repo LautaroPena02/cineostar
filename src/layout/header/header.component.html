@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">🎬 Cineo</a>
+    
+    <!-- Botón de hamburguesa -->
+    <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menú colapsable -->
+    <div [ngbCollapse]="isMenuCollapsed" class="navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" (click)="closeNavbar()">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/search" (click)="closeNavbar()">Buscar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/watchlist" (click)="closeNavbar()">Pendientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/watched" (click)="closeNavbar()">Vistas</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

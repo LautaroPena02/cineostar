@@ -1,0 +1,30 @@
+<div class="container-fluid film-container">
+    <div class="container">
+      <h2 class="vintage-title">Lista de Pendientes</h2>
+      
+      <div *ngIf="watchlist.length === 0" class="alert alert-info vintage-alert empty-list">
+        No tienes películas en tu lista de pendientes. Añade algunas desde la página de detalles de películas.
+      </div>
+      
+      <div class="row g-3">
+        <div class="col-12 col-sm-6 col-lg-4" *ngFor="let movie of watchlist">
+          <div class="movie-card">
+            <div class="poster-frame">
+              <img [src]="movie.poster_path" class="movie-poster" alt="{{ movie.title }}">
+              <div class="film-strip top"></div>
+              <div class="film-strip bottom"></div>
+            </div>
+            <div class="card-content">
+              <h5 class="movie-title">{{ movie.title }}</h5>
+              <p class="release-year">{{ movie.release_date }}</p>
+              <div class="watchlist-actions">
+                <button (click)="removeFromWatchlist(movie.id)" class="vintage-btn remove-btn">
+                  <span class="btn-icon">×</span> Eliminar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

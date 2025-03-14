@@ -1,0 +1,32 @@
+<div class="container-fluid film-container">
+    <div class="container">
+      <h2 class="vintage-title">Películas Destacadas</h2>
+      
+      <div *ngIf="isLoading" class="d-flex justify-content-center my-5">
+        <div class="film-spinner" role="status">
+          <span class="visually-hidden">Cargando...</span>
+        </div>
+      </div>
+      
+      <div *ngIf="errorMessage" class="alert alert-danger vintage-alert">
+        {{ errorMessage }}
+      </div>
+      
+      <div class="row g-3">
+        <div class="col-12 col-sm-6 col-lg-4" *ngFor="let movie of popularMovies">
+          <div class="movie-card">
+            <div class="poster-frame">
+              <img [src]="movie.poster_path" class="movie-poster" alt="{{ movie.title }}">
+              <div class="film-strip top"></div>
+              <div class="film-strip bottom"></div>
+            </div>
+            <div class="card-content">
+              <h5 class="movie-title">{{ movie.title }}</h5>
+              <p class="release-year">{{ movie.release_date }}</p>
+              <a [routerLink]="['/movie', movie.id]" class="vintage-btn">Ver Detalles</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
