@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
 })
 export class OmdbService {
   private apiKey = environment.omdbApiKey;
-  private baseUrl = 'http://www.omdbapi.com/';
+  private baseUrl = 'https://www.omdbapi.com/';
 
   constructor(private http: HttpClient) { }
 
