@@ -1,7 +1,4 @@
 <div class="movie-detail-container" *ngIf="movie">
-    <a class="back-button" routerLink="/search">
-      <i class="fas fa-arrow-left"></i> Volver a búsqueda
-    </a>
     <div class="vintage-notification watchlist-notification" *ngIf="showWatchlistMessage">
       <i class="fas fa-bookmark"></i>
       "{{ movie.title }}" se ha agregado a tu lista de Pendientes
